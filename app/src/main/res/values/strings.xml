@@ -2,7 +2,7 @@
     <string name="app_name">MartianRobots-CodingChallenge</string>
     <string name="grid_error">Grid size must be defined!</string>
     <string name="grid_size">Grid size</string>
-    <string name="grid_size_ex">Example: 5 3</string>
+    <string name="grid_size_ex">Example: 5 3 (starting point 0)</string>
     <string name="pos_x">X</string>
     <string name="pos_x_ex">E.g. 1</string>
     <string name="pos_y">Y</string>
@@ -13,4 +13,6 @@
     <string name="robot_instructions_ex">Example: RFRFRFRF</string>
     <string name="btn_submit">Submit!</string>
     <string name="robots">Robots:</string>
+    <string name="grid_size_error">Max grid size 50</string>
+    <string name="max_value_50">Max value 50</string>
 </resources>
