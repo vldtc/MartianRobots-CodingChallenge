@@ -13,7 +13,7 @@ This project has been developed to resolve the Martian Robots coding challenge. 
 4. [Testing](#testing)
 
 
-## General information ℹ️
+## General information
 
 MartianRobots app comes in handy when you want to control your robots on Mars, using a simple yet efficient Android Application.
 
@@ -68,7 +68,7 @@ For example, the output corresponding to the previous input would be:
 - **Kotlin** is used as primary programming language.
 - **Jetpack Compose** is the toolkit used for building the UI.
 
-## Testing 🐛
+## Testing
 
 **JUnit4** and **Truth** libraries were used for testing.
 
