@@ -28,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,6 +49,7 @@ fun MartianRobotsScreen() {
     var robotInstructions by remember { mutableStateOf("") }
     val robots = remember { mutableStateListOf<Robot>() }
 
+    //Submit button function that triggers the logic of the app
     val onBtnSubmit: () -> Unit = {
         if (robotX.toInt() < 51 && robotY.toInt() < 51 && robotInstructions.length < 101) {
             val grid = parseGridSize(gridSize)
@@ -57,18 +59,21 @@ fun MartianRobotsScreen() {
 
             if (grid != null && position != null && orientation != null && robotInstructions.isNotEmpty()) {
                 val robot = Robot(position, orientation, position, orientation, false)
+                //Robot's instructions are being triggered here
                 processInstructions(robot, robotInstructions, grid)
+                //Robot is added to the mutableStateList so it can be displayed in RobotList()
                 robots.add(robot)
             }
         }
 
+        //After Submit is clicked, robot's X and Y, Orientation and Instructions values are being deleted from TextFields.
         robotX = ""
         robotY = ""
         robotOrientation = ""
         robotInstructions = ""
     }
 
-
+    //Screen UI layout
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -96,7 +101,7 @@ fun MartianRobotsScreen() {
         }
     }
 }
-
+//Grid Size Text Field Section with warning if empty and if any value is over 50.
 @Composable
 fun GridSizeInput(gridSize: String, onGridSizeChanged: (String) -> Unit) {
     val gridSizeNumbers = gridSize.trim().split(" ")
@@ -126,7 +131,7 @@ fun GridSizeInput(gridSize: String, onGridSizeChanged: (String) -> Unit) {
     }
 }
 
-
+//Robot Initial Position and Instructions Section with warnings if values for position is over 50 and if Instructions string is over 100.
 @Composable
 fun RobotInstructionsSection(
     robotX: String,
@@ -216,9 +221,10 @@ fun RobotInstructionsSection(
     }
 }
 
-
+//Dynamic Grid Generator based on Grid Size defined in GridSizeInput()
 @Composable
 fun GridSizeOutput(gridSize: String, robot: Robot?) {
+
     val grid = gridSize.split(" ").mapNotNull { it.toIntOrNull() }
     if (grid.size == 2 && grid[0] < 51 && grid[1] < 51) {
         val rows = grid[1] + 1
@@ -248,17 +254,41 @@ fun GridSizeOutput(gridSize: String, robot: Robot?) {
                                 )
                         ) {
                             if (robot != null && robot.position.x == column && robot.position.y == rows - row - 1) {
-                                Text(
-                                    text = robot.orientation.toString(),
-                                    textAlign = TextAlign.Center,
-                                    modifier = Modifier.fillMaxWidth()
-                                )
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxWidth(),
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Text(
+                                        text = "OUT",
+                                        textAlign = TextAlign.Center,
+                                        fontSize = 10.sp
+                                    )
+                                    Text(
+                                        text = robot.orientation.toString(),
+                                        textAlign = TextAlign.Center,
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                }
                             } else if (robot != null && robot.initialPosition.x == column && robot.initialPosition.y == rows - row - 1) {
-                                Text(
-                                    text = robot.initialOrientation.toString(),
-                                    textAlign = TextAlign.Center,
-                                    modifier = Modifier.fillMaxWidth()
-                                )
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxWidth(),
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Text(
+                                        text = "IN",
+                                        textAlign = TextAlign.Center,
+                                        fontSize = 10.sp
+                                    )
+                                    Text(
+                                        text = robot.initialOrientation.toString(),
+                                        textAlign = TextAlign.Center,
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                }
                             }
                         }
                     }
@@ -268,6 +298,7 @@ fun GridSizeOutput(gridSize: String, robot: Robot?) {
     }
 }
 
+//Robot list that gets updated when robot mutableStateList gets updated with a new Robot.
 @Composable
 fun RobotList(robots: List<Robot>) {
     Column {
@@ -277,6 +308,7 @@ fun RobotList(robots: List<Robot>) {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(vertical = 8.dp)
             ) {
                 Text(
                     "Initial: ${robot.initialPosition.x}, ${robot.initialPosition.y} ${robot.initialOrientation}",
