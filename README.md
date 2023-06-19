@@ -8,8 +8,9 @@ This project has been developed to resolve the Martian Robots coding challenge. 
 1. [General information](#general-information)
    1. [Input](#input)
    2. [Output](#output)
-2. [Technologies](#technologies)
-3. [Testing](#testing)
+2. [Screenshots] (#screenshots)
+3. [Technologies](#technologies)
+4. [Testing](#testing)
 
 
 ## General information ℹ️
@@ -54,8 +55,15 @@ For example, the output corresponding to the previous input would be:
 3 3 N LOST!
 
 ```
+## Screenshots
 
-### Technologies
+![Screenshot 2023-06-19 at 09 53 19](https://github.com/vldtc/MartianRobots-CodingChallenge/assets/129045490/613c50de-3ad9-44f7-92b1-df8a47930770)
+![Screenshot 2023-06-19 at 09 55 24](https://github.com/vldtc/MartianRobots-CodingChallenge/assets/129045490/1788e572-a5d0-4617-8a90-e96a05635b45)
+![Screenshot 2023-06-19 at 09 55 48](https://github.com/vldtc/MartianRobots-CodingChallenge/assets/129045490/d12b0538-7041-49d9-92d3-49d6195e874d)
+![Screenshot 2023-06-19 at 09 55 59](https://github.com/vldtc/MartianRobots-CodingChallenge/assets/129045490/7deca601-e0ce-47c6-9227-f2278d3e59cb)
+![Screenshot 2023-06-19 at 09 57 13](https://github.com/vldtc/MartianRobots-CodingChallenge/assets/129045490/b853e06f-a3f5-4906-8412-5247bb07d229)
+
+## Technologies
 
 - **Kotlin** is used as primary programming language.
 - **Jetpack Compose** is the toolkit used for building the UI.
