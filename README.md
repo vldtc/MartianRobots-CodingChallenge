@@ -8,7 +8,7 @@ This project has been developed to resolve the Martian Robots coding challenge. 
 1. [General information](#general-information)
    1. [Input](#input)
    2. [Output](#output)
-2. [Screenshots] (#screenshots)
+2. [Screenshots](#screenshots)
 3. [Technologies](#technologies)
 4. [Testing](#testing)
 
